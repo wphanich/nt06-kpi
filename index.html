@@ -513,7 +513,7 @@ function getPd(team){
   return currentMonth===0 ? kpiData[team].cumulative : (kpiData[team][currentMonth]||{kpiItems:[],outsideItems:[]});
 }
 function kpiScore(pd){return round1((pd.kpiItems||[]).reduce((s,x)=>s+x.score,0));}
-function getTgt(team){return kpiData[team].target;}
+function getTgt(team){ return kpiData[team].target * (currentMonth===0 ? 6 : 1); }
 function monthHasData(mo){
   return Object.keys(TEAM_TARGETS).some(t=>{
     const pd=kpiData[t][mo];
